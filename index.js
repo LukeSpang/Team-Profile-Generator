@@ -7,6 +7,7 @@ const render = require('./lib/html');
 const Manager = require('./lib/manager');
 const Intern = require('./lib/intern');
 const Engineer = require('./lib/engineer');
+//const Employee = require('./lib/employee')
 const employees = [];
 
 employeeType = () => {
