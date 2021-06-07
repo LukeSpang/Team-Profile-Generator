@@ -93,3 +93,21 @@ addIntern = () =>{
     });
 };
 
+addEmployee = () =>{
+    return inquirer.prompt([
+        {
+            type: "list",
+            message: "Do you wish to add another team member?",
+            choices: ["Yes", "No"],
+            name: "another"
+        },
+    ])
+    .then((choice)=>{
+        if(choice.add === "Yes"){
+            employeeType();
+        }else{
+            renderHtml();
+        }
+    });
+};
+
