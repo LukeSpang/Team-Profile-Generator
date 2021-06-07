@@ -111,3 +111,34 @@ addEmployee = () =>{
     });
 };
 
+init = () =>{
+    return inquirer.prompt([
+        {
+            type: "input",
+            message: "Who is the team's Manager?",
+            name: "name",
+        },
+        {
+            type: "input",
+            message: "What is the managers employee ID?",
+            name: "id",
+        },
+        {
+            type: "input",
+            message: "What is the managers email address?",
+            name: "email",
+        },
+        {
+            type: "input",
+            message: "What is the managers office number?",
+            name: "officeNumber",
+        },
+    ])
+    .then((managerResults)=>{
+        managerResults.role = "Manager";
+        const {name, id, email, officeNumber} = managerResults;
+        const newManager = new Manager(name, id, email, officeNumber, role);
+        employees.push(newManager);
+        employeeType();
+    });
+};

@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/LukeSpang/Team-Profile-Generator#readme",
   "dependencies": {
+    "fs": "0.0.1-security",
     "inquirer": "^8.1.0",
     "jest": "^27.0.3"
   }
