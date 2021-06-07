@@ -4,7 +4,7 @@ const path = require('path');
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require('./lib/html');
-const Manager = require('./lib/mangaer');
+const Manager = require('./lib/manager');
 const Intern = require('./lib/intern');
 const Engineer = require('./lib/engineer');
 const employees = [];
@@ -86,7 +86,7 @@ addIntern = () =>{
     ])
     .then((internResults)=>{
         internResults.role = "Intern";
-        const {name, id, email, school} = internResults;
+        const {name, id, email, school, role} = internResults;
         const newIntern = new Intern(name, id, email, school, role);
         employees.push(newIntern);
         addEmployee();
@@ -99,16 +99,17 @@ addEmployee = () =>{
             type: "list",
             message: "Do you wish to add another team member?",
             choices: ["Yes", "No"],
-            name: "another"
+            name: "add"
         },
     ])
-    .then((choice)=>{
-        if(choice.add === "Yes"){
+    .then(choice =>{
+        if (choice.add === "Yes"){
             employeeType();
         }else{
             renderHtml();
-        }
+        };
     });
+    
 };
 
 init = () =>{
@@ -136,7 +137,7 @@ init = () =>{
     ])
     .then((managerResults)=>{
         managerResults.role = "Manager";
-        const {name, id, email, officeNumber} = managerResults;
+        const {name, id, email, officeNumber, role} = managerResults;
         const newManager = new Manager(name, id, email, officeNumber, role);
         employees.push(newManager);
         employeeType();
