@@ -142,3 +142,15 @@ init = () =>{
         employeeType();
     });
 };
+
+renderHtml = () =>{
+    const buildHTML = render(employees);
+    fs.writeFile(outputPath, buildHTML, (err)=>{
+        if(err){
+            return console.log(err);
+        }else{
+            return console.log("HTML file created!");
+        }
+    });
+};
+init();
